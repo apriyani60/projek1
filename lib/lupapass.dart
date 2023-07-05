@@ -16,10 +16,20 @@ class _LupaPassViewState extends State<LupaPassView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Image.asset('assets/images/Back.png'),
+        ),
+        backgroundColor: Colors.white,
+        elevation: 0.0,
+      ),
       body: Padding(
         padding: const EdgeInsets.only(
           left: 20.0,
-          right: 30.0,
+          right: 20.0,
           top: 20.0,
         ),
         child: Column(
