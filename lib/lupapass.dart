@@ -1,6 +1,9 @@
+import 'package:app3/requestController.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'login.dart';
+import 'layout.dart';
 
 class LupaPassView extends StatefulWidget {
   const LupaPassView({Key? key}) : super(key: key);
@@ -10,6 +13,7 @@ class LupaPassView extends StatefulWidget {
 }
 
 class _LupaPassViewState extends State<LupaPassView> {
+  final requestController = Get.put(RequestController());
   TextEditingController tUser = TextEditingController();
   TextEditingController tPass = TextEditingController();
 
@@ -68,6 +72,10 @@ class _LupaPassViewState extends State<LupaPassView> {
               height: 20.0,
             ),
             TextButton(
+              onPressed: () async {
+                print('Login ${tUser.text} dan ${tPass.text}');
+                await requestController.createUser(context, 'rika', '9898');
+              },
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(
                   Colors.purple,
@@ -87,14 +95,6 @@ class _LupaPassViewState extends State<LupaPassView> {
                   ),
                 ),
               ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const LupaPassView(),
-                  ),
-                );
-              },
               child: Text('Lupa Password'),
             ),
             SizedBox(
